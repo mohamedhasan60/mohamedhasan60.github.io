@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohamed Elgohary | Data Analyst & AI Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #1c2333;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #f78166;
+      --text: #e6edf3;
+      --text2: #8b949e;
+      --text3: #c9d1d9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(13,17,23,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .nav-logo { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; font-size: 1rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text2); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 80px 2rem 2rem;
+      background: radial-gradient(ellipse at 20% 50%, rgba(88,166,255,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(63,185,80,0.05) 0%, transparent 50%);
+    }
+    .hero-inner { max-width: 900px; width: 100%; display: flex; align-items: center; gap: 4rem; }
+    .hero-photo {
+      width: 180px; height: 180px; border-radius: 50%; flex-shrink: 0;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 40px rgba(88,166,255,0.2);
+      object-fit: cover;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem; font-weight: 700; line-height: 1.15;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero-roles { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .role-tag {
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 20px;
+      font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    }
+    .hero-bio { color: var(--text2); font-size: 1rem; max-width: 520px; margin: 1rem 0 1.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { background: #79b8ff; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--border); color: var(--text2); background: transparent; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 960px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.4rem; font-weight: 700; color: var(--text);
+      margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .about-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .about-card i { color: var(--accent); font-size: 1.1rem; margin-top: 2px; }
+    .about-card h4 { font-size: 0.8rem; color: var(--text2); margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .about-card p { font-size: 0.95rem; color: var(--text3); }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .skill-group {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem;
+    }
+    .skill-group h4 { font-size: 0.8rem; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: var(--bg3); border: 1px solid var(--border); color: var(--text3);
+      padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.8rem;
+    }
+
+    /* EXPERIENCE & EDUCATION */
+    .timeline { display: flex; flex-direction: column; gap: 1.25rem; }
+    .timeline-item {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.25rem 1.5rem; position: relative; border-left: 3px solid var(--accent);
+    }
+    .timeline-item h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .timeline-item .org { color: var(--accent); font-size: 0.85rem; font-weight: 500; }
+    .timeline-item .date { color: var(--text2); font-size: 0.8rem; margin: 0.3rem 0 0.75rem; font-family: 'JetBrains Mono', monospace; }
+    .timeline-item p { color: var(--text2); font-size: 0.9rem; }
+    .timeline-item ul { color: var(--text2); font-size: 0.9rem; padding-left: 1.2rem; }
+    .timeline-item ul li { margin-bottom: 0.3rem; }
+    .badge-in-progress {
+      display: inline-block; background: rgba(247,129,102,0.15); color: var(--accent3);
+      border: 1px solid var(--accent3); border-radius: 20px; font-size: 0.7rem;
+      padding: 0.1rem 0.6rem; margin-left: 0.5rem; vertical-align: middle;
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .project-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .project-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .project-card h3 a { color: var(--text); text-decoration: none; }
+    .project-card h3 a:hover { color: var(--accent); }
+    .project-card p { color: var(--text2); font-size: 0.88rem; line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .project-tag {
+      background: rgba(88,166,255,0.1); color: var(--accent);
+      padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .project-coming {
+      border: 1px dashed var(--border); opacity: 0.6;
+    }
+    .project-coming:hover { transform: none; border-color: var(--border); }
+
+    /* CERTIFICATIONS */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .cert-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .cert-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+    .cert-card .issuer { color: var(--accent2); font-size: 0.82rem; font-weight: 500; }
+    .cert-card .cert-date { color: var(--text2); font-size: 0.78rem; margin-top: 0.3rem; font-family: 'JetBrains Mono', monospace; }
+
+    /* ACHIEVEMENTS */
+    .achieve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .achieve-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; text-align: center;
+    }
+    .achieve-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .achieve-card h4 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+    .achieve-card p { color: var(--text2); font-size: 0.85rem; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .contact-link {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.25rem; text-align: center; text-decoration: none; color: var(--text2);
+      transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+    .contact-link i { font-size: 1.5rem; }
+    .contact-link span { font-size: 0.85rem; font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); text-align: center;
+      padding: 2rem; color: var(--text2); font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-inner { flex-direction: column; text-align: center; gap: 2rem; }
+      .hero-roles { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .hero-text h1 { font-size: 2rem; }
+      .about-grid, .projects-grid, .achieve-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&lt;Mohamed /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <img class="hero-photo"
+         src="https://raw.githubusercontent.com/mohamedhasan60/mohamedhasan60/main/IMG-20250512-WA0054~2.jpg"
+         alt="Mohamed Elgohary"
+         onerror="this.src='https://avatars.githubusercontent.com/u/107931438'"/>
+    <div class="hero-text">
+      <h1>Mohamed Elgohary</h1>
+      <div class="hero-roles">
+        <span class="role-tag">📊 Data Analyst</span>
+        <span class="role-tag">🤖 Junior AI Engineer</span>
+        <span class="role-tag">⚙️ N8N Automation</span>
+        <span class="role-tag">🏆 ECPC Finalist</span>
+      </div>
+      <p class="hero-bio">
+        I help businesses turn raw, messy data into clear insights that drive smarter decisions — faster.
+        Skilled in Python, SQL, Power BI & Excel. Currently expanding into AI/ML & N8N Automation.
+      </p>
+      <div class="hero-btns">
+        <a href="https://www.upwork.com/freelancers/~0121e92fffe782bbed" class="btn btn-primary" target="_blank">
+          <i class="fas fa-briefcase"></i> Hire me on Upwork
+        </a>
+        <a href="https://github.com/mohamedhasan60/mohamedhasan60/raw/main/CV%20Mohamed%20Elgohary%20Data%20Analysis%20-%204%2C2026.pdf" class="btn btn-outline" target="_blank">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">👤 About Me</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <div><h4>Location</h4><p>El Mansoura, Egypt 🇪🇬</p></div>
+    </div>
+    <div class="about-card">
+      <i class="fas fa-graduation-cap"></i>
+      <div><h4>Education</h4><p>B.Sc. Computer Science — Misr Higher Institute</p></div>
+    </div>
+    <div class="about-card">
+      <i class="fas fa-language"></i>
+      <div><h4>Languages</h4><p>Arabic (Native) · English (B1) · German (A2)</p></div>
+    </div>
+    <div class="about-card">
+      <i class="fas fa-trophy"></i>
+      <div><h4>Achievement</h4><p>ECPC Finalist · 1000+ Problems Solved</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">🛠️ Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>💻 Programming</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">Dart</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>📊 Data Analysis</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Plotly</span>
+        <span class="skill-tag">Seaborn</span>
+        <span class="skill-tag">Matplotlib</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>📈 Business Intelligence</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>🤖 AI & ML</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">MobileNet</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>⚙️ Automation & Tools</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">N8N</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Jupyter</span>
+        <span class="skill-tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>🗄️ Databases</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2 class="section-title">💼 Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>AI & Data Science Trainee <span class="badge-in-progress">In Progress</span></h3>
+      <div class="org">Instant Software Solution</div>
+      <div class="date">2024 — Nov 2025</div>
+      <ul>
+        <li>Training on AI & Data Science fundamentals and applied projects</li>
+        <li>Working with Python, ML models, and data pipelines</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <h3>Freelance Data Analyst</h3>
+      <div class="org">ITIDA Gigs Program</div>
+      <div class="date">2024</div>
+      <ul>
+        <li>Government-backed freelance initiative for Egyptian tech talent</li>
+        <li>Delivered data analysis and reporting projects for clients</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="section-title">🎓 Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>B.Sc. Computer Science</h3>
+      <div class="org">Misr Higher Institute for Commerce & Computers</div>
+      <div class="date">2021 — 2025</div>
+      <p>Graduated with focus on AI, Data Analysis, and Software Development</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">📁 Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3><a href="https://github.com/mohamedhasan60/plant-disease-and-crop-recommendation" target="_blank">🌱 Plant Disease & Crop Recommendation</a></h3>
+      <p>AI + IoT system that helps farmers — crop recommendation via sensors & plant disease detection via deep learning (MobileNet + ESP32).</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">TensorFlow</span>
+        <span class="project-tag">MobileNet</span>
+        <span class="project-tag">IoT</span>
+        <span class="project-tag">ESP32</span>
+        <span class="project-tag">Flask</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3><a href="https://github.com/mohamedhasan60/Module_Prediction_Temp_Humi" target="_blank">🌡️ Temperature & Humidity Prediction</a></h3>
+      <p>ML model for predicting temperature & humidity readings from IoT sensor modules with high accuracy.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">IoT</span>
+      </div>
+    </div>
+    <div class="project-card project-coming">
+      <h3>📊 E-Commerce Sales Analysis</h3>
+      <p>End-to-end sales data analysis with interactive visualizations and business insights dashboard.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Pandas</span>
+        <span class="project-tag">Plotly</span>
+        <span class="project-tag">SQL</span>
+      </div>
+    </div>
+    <div class="project-card project-coming">
+      <h3>🤖 Customer Churn Prediction</h3>
+      <p>ML model to predict customer churn with feature engineering, model evaluation, and business recommendations.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Scikit-learn</span>
+        <span class="project-tag">Seaborn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <h2 class="section-title">📜 Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <h4>Python for Data Analysis</h4>
+      <div class="issuer">NTI — National Telecommunication Institute</div>
+      <div class="cert-date">Feb — Apr 2025 · 120 hours</div>
+    </div>
+    <div class="cert-card">
+      <h4>Machine Learning for Data Analysis <span class="badge-in-progress">In Progress</span></h4>
+      <div class="issuer">NTI — National Telecommunication Institute</div>
+      <div class="cert-date">2025</div>
+    </div>
+    <div class="cert-card">
+      <h4>AI & Data Science Training <span class="badge-in-progress">In Progress</span></h4>
+      <div class="issuer">Instant Software Solution</div>
+      <div class="cert-date">2024 — Nov 2025</div>
+    </div>
+    <div class="cert-card">
+      <h4>N8N Automation Crash Course</h4>
+      <div class="issuer">Online</div>
+      <div class="cert-date">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <h2 class="section-title">🏆 Achievements</h2>
+  <div class="achieve-grid">
+    <div class="achieve-card">
+      <div class="icon">🏆</div>
+      <h4>ECPC Finalist</h4>
+      <p>Egyptian Collegiate Programming Contest — one of Egypt's most competitive algorithmic programming competitions</p>
+    </div>
+    <div class="achieve-card">
+      <div class="icon">💻</div>
+      <h4>1000+ Problems Solved</h4>
+      <p>Across Codeforces, LeetCode, HackerRank, VJudge & AtCoder — strong focus on algorithms & data structures</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">📬 Contact</h2>
+  <div class="contact-grid">
+    <a href="https://www.linkedin.com/in/mohamed-elgohary-ai/" class="contact-link" target="_blank">
+      <i class="fab fa-linkedin" style="color:#0077b5"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="mailto:elgohary1102003@gmail.com" class="contact-link">
+      <i class="fas fa-envelope" style="color:#ea4335"></i>
+      <span>Email</span>
+    </a>
+    <a href="https://t.me/+201141224519" class="contact-link" target="_blank">
+      <i class="fab fa-telegram" style="color:#2ca5e0"></i>
+      <span>Telegram</span>
+    </a>
+    <a href="https://wa.me/201141224519" class="contact-link" target="_blank">
+      <i class="fab fa-whatsapp" style="color:#25d366"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://www.upwork.com/freelancers/~0121e92fffe782bbed" class="contact-link" target="_blank">
+      <i class="fas fa-briefcase" style="color:#6fda44"></i>
+      <span>Upwork</span>
+    </a>
+    <a href="https://www.kaggle.com/mohamedhasan60" class="contact-link" target="_blank">
+      <i class="fab fa-kaggle" style="color:#20beff"></i>
+      <span>Kaggle</span>
+    </a>
+    <a href="https://github.com/mohamedhasan60" class="contact-link" target="_blank">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+    <a href="https://www.facebook.com/muhamedhasan60" class="contact-link" target="_blank">
+      <i class="fab fa-facebook" style="color:#1877f2"></i>
+      <span>Facebook</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Mohamed Elgohary · Built with ❤️ · El Mansoura, Egypt 🇪🇬</p>
+</footer>
+
+</body>
+</html>
